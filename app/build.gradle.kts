@@ -8,7 +8,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.voiceplayground"
+        applicationId = "me.nigini.android.voiceplayground"
         minSdk = 24
         targetSdk = 33
         versionCode = 1

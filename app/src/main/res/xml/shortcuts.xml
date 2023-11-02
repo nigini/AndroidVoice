@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <capability android:name="actions.intent.CREATE_THING">
+        <intent
+            android:targetPackage="me.nigini.android.voiceplayground"
+            android:targetClass="com.example.voiceplayground.MainActivity">
+            <parameter
+                android:name="thing.name"
+                android:key="name"/>
+            <parameter
+                android:name="thing.description"
+                android:key="description"/>
+        </intent>
+    </capability>
+    <!-- Short and long labels must be @string resource. -->
+    <shortcut
+        android:shortcutId="ID_ONE"
+        android:shortcutShortLabel="@string/shortcut_short_label">
+        <capability-binding android:key="actions.intent.CREATE_THING">
+            <parameter-binding
+                android:value="note"
+                android:key="thing.name"/>
+        </capability-binding>
+    </shortcut>
+</shortcuts>

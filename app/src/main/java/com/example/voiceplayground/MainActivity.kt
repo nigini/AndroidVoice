@@ -31,7 +31,6 @@ import com.example.voiceplayground.ui.theme.VoicePlaygroundTheme
 import java.util.Locale
 
 class MainActivity : ComponentActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -46,6 +45,25 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        intent?.handleIntent()
+    }
+
+    private fun Intent.handleIntent() {
+        val TAG = "INTENT"
+        when (action) {
+            Intent.ACTION_VIEW -> {
+                Log.d(TAG, "==== TRIGGERED ====")
+                Log.d(TAG, intent.toString())
+            }
+            else -> startActivity(intent)
+        }
+    }
+
+
+
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -60,7 +78,7 @@ fun NoteTaker(text: String, onTextChange: (String) -> Unit, modifier: Modifier =
         Button(
             onClick = {
                 startSpeechInput(
-                    localContext
+                    context = localContext
                 ) { onTextChange(text + it + "\n") }
             }
         ){
