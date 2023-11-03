@@ -15,7 +15,7 @@
         android:theme="@style/Theme.VoicePlayground"
         tools:targetApi="31">
         <activity
-            android:name=".ImageGeneratorActivity"
+            android:name=".NoteTakerActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.VoicePlayground">
@@ -23,9 +23,6 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <meta-data
-                android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
         </activity>
     </application>
 

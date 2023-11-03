@@ -1,12 +1,6 @@
 package com.example.voiceplayground
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.speech.RecognitionListener
-import android.speech.RecognizerIntent
-import android.speech.SpeechRecognizer
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
@@ -25,7 +19,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import com.example.voiceplayground.ui.theme.VoicePlaygroundTheme
-import java.util.Locale
 
 class NoteTakerActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,22 +33,6 @@ class NoteTakerActivity : ComponentActivity() {
                     NoteTaker(text = spokenText, onTextChange =  {spokenText = it})
                 }
             }
-        }
-    }
-
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-        intent?.handleIntent()
-    }
-
-    private fun Intent.handleIntent() {
-        val TAG = "INTENT"
-        when (action) {
-            Intent.ACTION_VIEW -> {
-                Log.d(TAG, "==== TRIGGERED ====")
-                Log.d(TAG, intent.toString())
-            }
-            else -> startActivity(intent)
         }
     }
 
