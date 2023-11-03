@@ -13,7 +13,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -26,7 +30,7 @@ class ImageGeneratorActivity: ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             VoicePlaygroundTheme {
-                var spokenText = ""
+                var spokenText by rememberSaveable() { mutableStateOf("What do you want to see?") }
                 var imageURL = ""
                 val localContext = LocalContext.current
                 val coroutineScope = rememberCoroutineScope()
@@ -40,7 +44,7 @@ class ImageGeneratorActivity: ComponentActivity() {
                             localContext = localContext,
                             prompt = spokenText,
                         ) {
-                            //TODO!
+                            spokenText = it
                         }
                         ImagePresenter(imageURL = imageURL)
                     }
